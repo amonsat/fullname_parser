@@ -81,37 +81,53 @@ func ParseFullname(fullname string) (parsedName ParsedName) {
 	splitName(fullname)
 
 	//suffix: remove and store
-	suffixes := findSuffixes()
-	parsedName.Suffix = strings.Join(suffixes, ", ")
+	if len(nameParts) > 1 {
+		suffixes := findSuffixes()
+		parsedName.Suffix = strings.Join(suffixes, ", ")
+	}
 
 	//titles: remove and store
-	titles := findTitles()
-	parsedName.Title = strings.Join(titles, ", ")
+	if len(nameParts) > 1 {
+		titles := findTitles()
+		parsedName.Title = strings.Join(titles, ", ")
+	}
 
 	// Join name prefixes to following names
-	joinPrefixes()
+	if len(nameParts) > 1 {
+		joinPrefixes()
+	}
 
 	// Join conjunctions to surrounding names
-	joinConjunctions()
+	if len(nameParts) > 1 {
+		joinConjunctions()
+	}
 
 	// Suffix: remove and store items after extra commas as suffixes
-	extraSuffixes := findExtraSuffixes()
-	if len(extraSuffixes) > 0 {
-		if parsedName.Suffix != "" {
-			parsedName.Suffix += ", " + strings.Join(extraSuffixes, ", ")
-		} else {
-			parsedName.Suffix = strings.Join(extraSuffixes, ", ")
+	if len(nameParts) > 1 {
+		extraSuffixes := findExtraSuffixes()
+		if len(extraSuffixes) > 0 {
+			if parsedName.Suffix != "" {
+				parsedName.Suffix += ", " + strings.Join(extraSuffixes, ", ")
+			} else {
+				parsedName.Suffix = strings.Join(extraSuffixes, ", ")
+			}
 		}
 	}
 
 	// Last name: remove and store last name
-	parsedName.Last = findLastname()
+	if len(nameParts) > 0 {
+		parsedName.Last = findLastname()
+	}
 
 	// First name: remove and store first part as first name
-	parsedName.First = findFirstname()
+	if len(nameParts) > 0 {
+		parsedName.First = findFirstname()
+	}
 
 	// Middle name: store all remaining parts as middle name
-	parsedName.Middle = findMiddlename()
+	if len(nameParts) > 0 {
+		parsedName.Middle = findMiddlename()
+	}
 
 	return
 }
