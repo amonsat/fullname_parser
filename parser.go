@@ -71,7 +71,7 @@ var (
 )
 
 func ParseFullname(fullname string) (parsedName ParsedName) {
-	log.Info("Start parsing fullname: ", fullname)
+	log.Debug("Start parsing fullname: ", fullname)
 
 	//nicknames: remove and store
 	nicknames := findNicknames(&fullname)
@@ -129,6 +129,7 @@ func ParseFullname(fullname string) (parsedName ParsedName) {
 		parsedName.Middle = findMiddlename()
 	}
 
+	log.Debugf("Parsing complete: %+v", parsedName)
 	return
 }
 
