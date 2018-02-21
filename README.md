@@ -19,11 +19,16 @@ parseFullName():
 
 ## Use
 
+### Instalation
+```
+	go get github.com/amonsat/fullname_parser
+```
+
 ### Basic Use
 
 ```go
 package main
-import fp "github.com/Amonsat/fullname_parser"
+import fp "github.com/amonsat/fullname_parser"
 
 func main() {
     parsedFullname := fp.ParseFullname("Mr. David Davis")
