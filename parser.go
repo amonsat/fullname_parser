@@ -60,7 +60,7 @@ var (
 		"sr d", "sra", "srta", "sultan", "tan sri", "tan sri dato", "tengku", "teuku",
 		"than puying", "the hon dr", "the hon justice", "the hon miss", "the hon mr",
 		"the hon mrs", "the hon ms", "the hon sir", "the very rev", "toh puan", "tun",
-		"vice admiral", "viscount", "viscountess", "wg cdr"}
+		"vice admiral", "viscount", "viscountess", "wg cdr", "ind", "misc", "mx"}
 
 	conjunctionList = []string{"&", "and", "et", "e", "of", "the", "und", "y"}
 )
